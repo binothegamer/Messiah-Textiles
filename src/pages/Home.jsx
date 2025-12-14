@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
-import Tabs from './Tabs'
-import Accordion from './Accordion'
-import ImageGallery from './ImageGallery'
-import Contact from './Contact'
-import './MainContent.css'
+import React from 'react'
+import ImageGallery from '../components/ImageGallery'
+import Tabs from '../components/Tabs'
+import Accordion from '../components/Accordion'
+import '../components/MainContent.css'
 
-function MainContent() {
+function Home() {
   return (
     <main className="main-content">
       <section className="hero-section" id="home">
@@ -35,11 +34,9 @@ function MainContent() {
           <Accordion />
         </div>
       </section>
-
-      <Contact />
     </main>
   )
 }
 
-export default MainContent
+export default Home
 
