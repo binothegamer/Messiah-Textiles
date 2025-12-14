@@ -1,6 +1,6 @@
 // Product categories configuration
 // To add a new category:
-// 1. Add folder structure in public/products/
+// 1. Add folder structure in public/Products/
 // 2. Add category object to productCategories array
 // 3. Add image files array to categoryImages map
 

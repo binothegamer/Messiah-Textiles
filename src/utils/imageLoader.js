@@ -6,12 +6,15 @@
  */
 export const getProductImagePath = (categoryPath, imageName) => {
   // Vite serves files from public folder at root
-  // Handle spaces in folder names - try both encoded and non-encoded
-  const pathParts = categoryPath.split('/')
+  // The folder is "Products" (capital P) not "products"
+  // Handle spaces in folder names by encoding them
+  const encodedPath = categoryPath.split('/').map(part => {
+    // Encode spaces in folder names
+    return part.replace(/ /g, '%20')
+  }).join('/')
   
-  // For paths with spaces, we need to encode them properly
-  // But Vite might handle them automatically, so we'll try the original first
-  const basePath = `/products/${categoryPath}/${imageName}`
+  // Use capital P for Products folder to match actual structure
+  const basePath = `/Products/${encodedPath}/${imageName}`
   
   return basePath
 }
@@ -34,16 +37,15 @@ export const checkImageExists = (src) => {
 export const getAlternativePaths = (categoryPath, imageName) => {
   const alternatives = []
   
-  // Original path
-  alternatives.push(`/products/${categoryPath}/${imageName}`)
+  // Try with capital P (correct)
+  const encodedPath = categoryPath.split('/').map(part => part.replace(/ /g, '%20')).join('/')
+  alternatives.push(`/Products/${encodedPath}/${imageName}`)
   
-  // Path with encoded spaces
-  const encodedPath = categoryPath.split('/').map(part => encodeURIComponent(part)).join('/')
+  // Try with lowercase p (fallback)
   alternatives.push(`/products/${encodedPath}/${imageName}`)
   
-  // Path with spaces as %20
-  const spaceEncodedPath = categoryPath.replace(/ /g, '%20')
-  alternatives.push(`/products/${spaceEncodedPath}/${imageName}`)
+  // Try without encoding spaces
+  alternatives.push(`/Products/${categoryPath}/${imageName}`)
   
   return alternatives
 }

@@ -105,14 +105,20 @@ function ProductCategory({ category, onImageClick }) {
                 loading={index < 6 ? 'eager' : 'lazy'}
                 onError={(e) => {
                   console.error('Failed to load image:', image.src)
-                  // Try alternative path with encoded spaces
-                  const altSrc = image.src.replace(/ /g, '%20')
-                  if (altSrc !== image.src) {
-                    console.log('Trying alternative path:', altSrc)
-                    e.target.src = altSrc
+                  const img = e.target
+                  
+                  // Try alternative path - switch between Products and products
+                  if (image.src.includes('/Products/')) {
+                    const altSrc = image.src.replace('/Products/', '/products/')
+                    console.log('Trying lowercase path:', altSrc)
+                    img.src = altSrc
+                  } else if (image.src.includes('/products/')) {
+                    const altSrc = image.src.replace('/products/', '/Products/')
+                    console.log('Trying uppercase path:', altSrc)
+                    img.src = altSrc
                   } else {
                     // Show error placeholder if all attempts fail
-                    const wrapper = e.target.parentElement
+                    const wrapper = img.parentElement
                     if (wrapper && !wrapper.querySelector('.error-placeholder')) {
                       const errorDiv = document.createElement('div')
                       errorDiv.className = 'error-placeholder'
@@ -120,7 +126,7 @@ function ProductCategory({ category, onImageClick }) {
                       errorDiv.innerHTML = '<div style="font-size: 2rem; margin-bottom: 0.5rem;">📷</div><div style="font-size: 0.875rem;">Image not found</div>'
                       wrapper.appendChild(errorDiv)
                     }
-                    e.target.style.display = 'none'
+                    img.style.display = 'none'
                   }
                 }}
                 onLoad={(e) => {
