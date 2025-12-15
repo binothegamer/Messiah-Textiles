@@ -47,7 +47,7 @@ export const productCategories = [
 // Update this when adding new product images
 export const categoryImages = {
   'Mens/Shirts': [
-    'Picture6.png', 'Picture7.png', 'Picture8.png', 'Picture9.png', 'Picture10.png',
+    'Picture6.png', 'Picture8.png', 'Picture9.png', 'Picture10.png',
     'Picture11.png', 'Picture12.png', 'Picture13.png', 'Picture14.png', 'Picture15.png',
     'Picture16.png', 'Picture17.png', 'Picture18.png', 'Picture19.png', 'Picture20.png',
     'Picture21.png', 'Picture22.png', 'Picture23.png', 'Picture24.png', 'Picture25.png',

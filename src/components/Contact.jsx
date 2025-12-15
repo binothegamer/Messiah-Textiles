@@ -36,9 +36,9 @@ function Contact() {
 
           <div className="contact-grid">
             <div className="contact-card owner-card">
-              <h3>Owner</h3>
+              <h3>Contact Person</h3>
               <p className="owner-name">David</p>
-              <p><a href="mailto:david@messiahtextiles.in">david@messiahtextiles.in</a></p>
+              <p><a href="mailto:david@messiahtextiles.in">david@messiahtextile.in</a></p>
               <p><a href="tel:+919843128881">+91 98431 28881</a></p>
               <p className="card-hint">Available 9 AM – 6 PM IST (Mon–Sat)</p>
             </div>

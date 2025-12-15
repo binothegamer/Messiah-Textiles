@@ -123,7 +123,7 @@ function About() {
                 </div>
                 <div className="capacity-item">
                   <span className="capacity-label">Payment Terms:</span>
-                  <span className="capacity-value">30% Advance balance LC at sight/ Documents thru Bank</span>
+                  <span className="capacity-value">40% Advance balance LC at sight/ Documents thru Bank</span>
                 </div>
                 <div className="capacity-item">
                   <span className="capacity-label">Lead Time:</span>
@@ -150,7 +150,7 @@ function About() {
           <div className="strengths-grid">
             <div className="strength-card">
               <img 
-                src="https://images.unsplash.com/photo-1596755094514-1a7b8c0e8b0a?w=600&h=400&fit=crop" 
+                src="https://tse2.mm.bing.net/th/id/OIP.LCPTbWMXZv--x4dTutTQ0QHaDt?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" 
                 alt="Core strengths"
               />
               <div className="strength-content">

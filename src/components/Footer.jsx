@@ -23,7 +23,7 @@ function Footer() {
             </p>
             <p>
               <strong>Email:</strong>
-              david@messiahtextiles.in
+              david@messiahtextile.in
             </p>
           </div>
         </div>
