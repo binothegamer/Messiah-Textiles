@@ -6,54 +6,72 @@ function Tabs() {
 
   const tabs = [
     {
-      label: 'Cotton',
+      label: 'Cotton Shirts',
       content: {
-        title: 'Premium Cotton Collection',
-        description: 'Our cotton fabrics are sourced from the finest cotton fields, ensuring softness, durability, and breathability. Perfect for clothing, home textiles, and more.',
+        title: 'Cotton Shirts',
+        description:
+          'Everyday comfort, elevated. Our cotton shirts are woven from premium, long-staple cotton for a soft handfeel that gets better with every wash. Breathable, durable, and easy to care for, they’re designed for all-day comfort in the office, on the road, or at home.',
         features: [
-          '100% Organic Cotton',
-          'Multiple Weights Available',
-          'Various Colors and Patterns',
-          'Eco-Friendly Production'
+          'Premium long-staple cotton',
+          'Soft, breathable, and durable',
+          'Ideal for work, travel, and daily wear',
+          'Easy-care, everyday essential'
         ]
       }
     },
     {
-      label: 'Silk',
+      label: 'Linen Shirts',
       content: {
-        title: 'Luxury Silk Textiles',
-        description: 'Experience the elegance of our premium silk collection. Handpicked for their luster and quality, these silks are perfect for high-end fashion and luxury home decor.',
+        title: 'Linen Shirts',
+        description:
+          'Lightweight luxury for warm days. Crafted from pure linen, these shirts offer exceptional breathability and a naturally relaxed drape. Perfect for tropical climates and summer evenings, they keep you cool while adding an effortless, refined look.',
         features: [
-          'Mulberry Silk',
-          'Natural Dyes',
-          'Multiple Grades',
-          'Custom Weaving Available'
+          '100% linen construction',
+          'Naturally cool and breathable',
+          'Relaxed, timeless drape',
+          'Ideal for warm climates and summers'
         ]
       }
     },
     {
-      label: 'Wool',
+      label: 'Bamboo Leisurewear',
       content: {
-        title: 'Fine Wool Fabrics',
-        description: 'Our wool collection features premium quality fibers that provide exceptional warmth and comfort. Ideal for winter clothing and cozy home textiles.',
+        title: 'Bamboo Leisurewear',
+        description:
+          'Soft on skin, light on the planet. Our bamboo leisurewear is made from ultra-soft, naturally antibacterial bamboo fibers that regulate temperature and wick away moisture. Ideal for lounging, travel, and everyday wear, it delivers cloud-like comfort with a sustainable footprint.',
         features: [
-          'Merino Wool Available',
-          'Natural Insulation',
-          'Moisture Wicking',
-          'Sustainable Sourcing'
+          'Ultra-soft bamboo fibers',
+          'Naturally antibacterial and breathable',
+          'Moisture-wicking and temperature-regulating',
+          'Perfect for lounging, travel, and daily wear'
         ]
       }
     },
     {
-      label: 'Linen',
+      label: 'Sleeping Bags',
       content: {
-        title: 'Natural Linen Collection',
-        description: 'Discover our range of natural linen fabrics, known for their strength, coolness, and timeless elegance. Perfect for summer clothing and home furnishings.',
+        title: 'Sleeping Bags',
+        description:
+          'Restfully warm, wherever you are. Engineered for comfort and protection, our sleeping bags combine insulating fillings with breathable linings for a restful night’s sleep. From family camping trips to overnight treks, they’re built to keep you warm, secure, and refreshed by morning.',
         features: [
-          '100% Flax Linen',
-          'Natural Texture',
-          'Breathable Material',
-          'Eco-Conscious Choice'
+          'Warm, insulating construction',
+          'Breathable inner linings',
+          'Suitable for camping and trekking',
+          'Designed for secure, restful sleep outdoors'
+        ]
+      }
+    },
+    {
+      label: 'Recycled Cotton Tote Bags',
+      content: {
+        title: 'Recycled Cotton Tote Bags',
+        description:
+          'Carry more, waste less. Made from recycled cotton yarns, these totes turn textile waste into durable, everyday essentials. Strong enough for groceries, books, and daily errands, they’re a stylish reminder that practical design and sustainability can go hand in hand.',
+        features: [
+          'Crafted from recycled cotton',
+          'Durable for daily use and errands',
+          'Reduces textile waste',
+          'Functional and sustainability-focused design'
         ]
       }
     }

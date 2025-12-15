@@ -5,25 +5,37 @@ function ImageGallery() {
   const images = [
     {
       id: 1,
-      src: 'https://images.unsplash.com/photo-1586105251261-72a756497a11?w=800&h=600&fit=crop',
+      src: '/Products/Mens/Shirts/Picture28.png',
       alt: 'Premium Cotton Fabric',
       title: 'Premium Cotton'
     },
     {
       id: 2,
-      src: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=600&fit=crop',
+      src: '/Products/Mens/Shirts/Picture15.png',
       alt: 'Silk Textiles',
       title: 'Luxury Silk'
     },
     {
       id: 3,
-      src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop',
+      src: '/Products/Mens/Lounge wear/Picture33.png',
       alt: 'Wool Fabric',
       title: 'Fine Wool'
     },
     {
       id: 4,
-      src: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=800&h=600&fit=crop',
+      src: '/Products/Mens/Shirts/Picture10.png',
+      alt: 'Linen Textiles',
+      title: 'Natural Linen'
+    },
+    {
+      id: 5,
+      src: '/Products/Women/Picture42.png',
+      alt: 'Linen Textiles',
+      title: 'Natural Linen'
+    },
+    {
+      id: 6,
+      src: '/Products/Mens/Lounge wear/Picture35.png',
       alt: 'Linen Textiles',
       title: 'Natural Linen'
     }

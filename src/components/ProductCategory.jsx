@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './ProductCategory.css'
 import { getCategoryImages } from '../utils/productConfig'
 import { getProductImagePath } from '../utils/imageLoader'
@@ -8,46 +8,31 @@ function ProductCategory({ category, onImageClick }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    if (!category?.path) return
     loadImages()
-  }, [category.path, category.name])
+  }, [category?.path])
 
   const loadImages = async () => {
     setLoading(true)
+
     try {
-      // Get image file names from config
       const imageFiles = getCategoryImages(category.path)
-      
+
       if (!imageFiles || imageFiles.length === 0) {
         console.warn(`No images configured for category: ${category.path}`)
         setImages([])
-        setLoading(false)
         return
       }
-      
-      const imageList = []
-      
-      // Vite serves public folder files directly
-      // Paths should match the folder structure exactly
-      // For spaces in folder names, we'll try both encoded and non-encoded
-      const pathParts = category.path.split('/')
-      const normalizedPath = pathParts.join('/') // Keep original path structure
-      
-      imageFiles.forEach((imageName, index) => {
-        // Use utility function to get proper image path
-        const imageSrc = getProductImagePath(normalizedPath, imageName)
-        
-        imageList.push({
-          src: imageSrc,
-          alt: `${category.name} - Product ${index + 1}`,
-          index: index
-        })
-      })
-      
-      // Log first few image paths for debugging
-      if (imageList.length > 0) {
-        console.log(`Loaded ${imageList.length} images for ${category.name}`)
-        console.log('Sample paths:', imageList.slice(0, 3).map(img => img.src))
-      }
+
+      const imageList = imageFiles.map((imageName, index) => ({
+        src: getProductImagePath(category.path, imageName),
+        alt: `${category.name} - Product ${index + 1}`,
+        index
+      }))
+
+      console.log(`Loaded ${imageList.length} images for ${category.name}`)
+      console.log('Sample paths:', imageList.slice(0, 3).map(i => i.src))
+
       setImages(imageList)
     } catch (error) {
       console.error('Error loading images:', error)
@@ -60,7 +45,7 @@ function ProductCategory({ category, onImageClick }) {
   if (loading) {
     return (
       <div className="category-loading">
-        <div className="loading-spinner"></div>
+        <div className="loading-spinner" />
         <p>Loading products...</p>
       </div>
     )
@@ -74,14 +59,10 @@ function ProductCategory({ category, onImageClick }) {
     )
   }
 
-  // Choose layout based on number of images
-  const getLayoutType = () => {
-    if (images.length <= 4) return 'featured'
-    if (images.length <= 12) return 'grid'
-    return 'masonry'
-  }
-
-  const layoutType = getLayoutType()
+  const layoutType =
+    images.length <= 4 ? 'featured' :
+    images.length <= 12 ? 'grid' :
+    'masonry'
 
   return (
     <div className={`product-category ${layoutType}-layout`}>
@@ -95,7 +76,9 @@ function ProductCategory({ category, onImageClick }) {
         {images.map((image, index) => (
           <div
             key={index}
-            className={`product-item ${index === 0 && layoutType === 'featured' ? 'featured' : ''}`}
+            className={`product-item ${
+              index === 0 && layoutType === 'featured' ? 'featured' : ''
+            }`}
             onClick={() => onImageClick(image.src)}
           >
             <div className="product-image-wrapper">
@@ -103,39 +86,11 @@ function ProductCategory({ category, onImageClick }) {
                 src={image.src}
                 alt={image.alt}
                 loading={index < 6 ? 'eager' : 'lazy'}
-                onError={(e) => {
-                  console.error('Failed to load image:', image.src)
-                  const img = e.target
-                  
-                  // Try alternative path - switch between Products and products
-                  if (image.src.includes('/Products/')) {
-                    const altSrc = image.src.replace('/Products/', '/products/')
-                    console.log('Trying lowercase path:', altSrc)
-                    img.src = altSrc
-                  } else if (image.src.includes('/products/')) {
-                    const altSrc = image.src.replace('/products/', '/Products/')
-                    console.log('Trying uppercase path:', altSrc)
-                    img.src = altSrc
-                  } else {
-                    // Show error placeholder if all attempts fail
-                    const wrapper = img.parentElement
-                    if (wrapper && !wrapper.querySelector('.error-placeholder')) {
-                      const errorDiv = document.createElement('div')
-                      errorDiv.className = 'error-placeholder'
-                      errorDiv.style.cssText = 'position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #9ca3af; z-index: 1;'
-                      errorDiv.innerHTML = '<div style="font-size: 2rem; margin-bottom: 0.5rem;">📷</div><div style="font-size: 0.875rem;">Image not found</div>'
-                      wrapper.appendChild(errorDiv)
-                    }
-                    img.style.display = 'none'
-                  }
-                }}
-                onLoad={(e) => {
-                  e.target.classList.add('loaded')
-                  e.target.style.opacity = '1'
-                }}
                 className="product-img"
-                style={{ opacity: 1 }}
+                onLoad={e => e.currentTarget.classList.add('loaded')}
+                onError={e => handleImageError(e, image.src)}
               />
+
               <div className="product-overlay">
                 <span className="view-icon">👁️</span>
                 <span className="view-text">View</span>
@@ -148,5 +103,28 @@ function ProductCategory({ category, onImageClick }) {
   )
 }
 
-export default ProductCategory
+/* ---------- Image Fallback Handler ---------- */
 
+const handleImageError = (e, src) => {
+  const img = e.currentTarget
+
+  if (src.includes('/Products/')) {
+    img.src = src.replace('/Products/', '/products/')
+    return
+  }
+
+  img.style.display = 'none'
+
+  const wrapper = img.parentElement
+  if (wrapper && !wrapper.querySelector('.error-placeholder')) {
+    const errorDiv = document.createElement('div')
+    errorDiv.className = 'error-placeholder'
+    errorDiv.innerHTML = `
+      <div style="font-size:2rem">📷</div>
+      <div style="font-size:0.85rem">Image not found</div>
+    `
+    wrapper.appendChild(errorDiv)
+  }
+}
+
+export default ProductCategory

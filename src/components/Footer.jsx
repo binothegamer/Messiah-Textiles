@@ -14,18 +14,16 @@ function Footer() {
           <h4>Contact Information</h4>
           <div className="contact-info">
             <p>
-              <strong>Address:</strong><br />
-              123 Textile Street<br />
-              Fabric City, FC 12345<br />
-              United States
+              <strong>Address:</strong>
+              #295/2, P.V. Govindarajan St,<br/> Venkateswara Nagar, Srinivasapuram Village,<br/> Iyyappanthangal, Chennai - 600122
             </p>
             <p>
-              <strong>Phone:</strong><br />
-              +1 (555) 123-4567
+              <strong>Phone:</strong>
+              +91 98431 28881
             </p>
             <p>
-              <strong>Email:</strong><br />
-              info@messiahtextiles.com
+              <strong>Email:</strong>
+              david@messiahtextiles.in
             </p>
           </div>
         </div>
